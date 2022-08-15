@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WebBanVaLi" Class="WebBanValiDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=laptop-4ic7347m;Initial Catalog=WebBanVaLi;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WebBanVaLiConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tLoaiSP" Member="tLoaiSPs">
+    <Type Name="tLoaiSP">
+      <Column Name="MaLoai" Type="System.String" DbType="Char(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Loai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tLoaiSP_tDanhMucSP" Member="tDanhMucSPs" ThisKey="MaLoai" OtherKey="MaLoai" Type="tDanhMucSP" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDanhMucSP" Member="tDanhMucSPs">
+    <Type Name="tDanhMucSP">
+      <Column Name="MaSP" Type="System.String" DbType="Char(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenSP" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="MaChatLieu" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="NganLapTop" Type="System.String" DbType="NVarChar(55)" CanBeNull="true" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(55)" CanBeNull="true" />
+      <Column Name="MauSac" Type="System.String" DbType="NVarChar(55)" CanBeNull="true" />
+      <Column Name="MaKichThuoc" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="CanNang" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DoNoi" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaHangSX" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="MaNuocSX" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="MaDacTinh" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="Char(155)" CanBeNull="true" />
+      <Column Name="ThoiGianBaoHanh" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GioiThieuSP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChietKhau" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaLoai" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="MaDT" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="Anh" Type="System.String" DbType="Char(100)" CanBeNull="true" />
+      <Association Name="tLoaiSP_tDanhMucSP" Member="tLoaiSP" ThisKey="MaLoai" OtherKey="MaLoai" Type="tLoaiSP" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

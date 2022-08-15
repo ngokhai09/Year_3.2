@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9441dc115c604cfe99d9a87f405094df" Name="Diagram1">
+        <EntityTypeShape EntityType="CSDLThuVienModel.tBanSaoSach" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tDocGia" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tDoiTuong" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tDonVi" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tLoaiSach" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tMuonTra" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tNgonNgu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tNhaXB" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLThuVienModel.tSach" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tBanSaoSach_tSach" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tMuonTra_tBanSaoSach" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tDocGia_tDoiTuong" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tDocGia_tDonVi" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tSach_tLoaiSach" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tSach_tNgonNgu" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLThuVienModel.FK_tSach_tNhaXB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

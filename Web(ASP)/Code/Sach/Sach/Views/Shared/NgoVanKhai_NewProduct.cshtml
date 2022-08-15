@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Sach.Models.tSach>
+<div class="new_products">
+    @{ 
+        foreach (var item in Model)
+        {
+        <div class="new_prod_box">
+            <a href="details.html">@item.TenSach</a>
+            <div class="new_prod_bg">
+                <span class="new_icon"><img src="~/Content/images/new_icon.gif" alt="" title="" /></span>
+                <a href="details.html"><img src="~/Content/images/@item.FileAnh" alt="" title="" class="thumb" border="0" /></a>
+            </div>
+        </div>
+            }
+        }
+
+
+
+
+</div>

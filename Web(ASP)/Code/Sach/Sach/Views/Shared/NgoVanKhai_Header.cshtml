@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Sach.Models.tLoaiSach>
+<div class="header">
+    <div class="logo"><a href="index.html"><img src="~/Content/images/logo.gif" alt="" title="" border="0" /></a></div>
+    <div id="menu">
+        <ul>
+            
+            @{
+            foreach (var item in Model)
+            {
+            <li id="@item.MaLoai"><a >@item.TenLoai</a></li>
+            }
+            }
+            
+            @*
+            <li><a href="category.html">books</a></li>
+            <li><a href="specials.html">specials books</a></li>
+            <li><a href="myaccount.html">my accout</a></li>
+            <li><a href="register.html">register</a></li>
+            <li><a href="details.html">prices</a></li>
+            <li><a href="contact.html">contact</a></li>*@
+        </ul>
+    </div>
+
+
+</div>
+<script>
+@*    $("li").click(() => {
+        let id = $(this).val();
+        $.ajax({
+            url: "RenBookByCatId",
+            data: { id: id },
+            success: function (res) {
+                console.log(id);
+                $("new_products").html(res);
+            }
+        })
+    })*@
+    $("li").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url: "RenBookByCatId",
+            data: { id: id },
+            success: function (res) {
+                console.log(res);
+                $("div.new_products").html(res);
+            }
+        })
+    })
+</script>

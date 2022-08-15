@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSDLThuVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tBanSaoSach">
+    <Key>
+      <PropertyRef Name="MaBanSao" />
+    </Key>
+    <Property Name="MaBanSao" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaSach" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="TinhTrangSach" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ViTri" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tSach" Relationship="Self.FK_tBanSaoSach_tSach" FromRole="tBanSaoSach" ToRole="tSach" />
+    <NavigationProperty Name="tMuonTras" Relationship="Self.FK_tMuonTra_tBanSaoSach" FromRole="tBanSaoSach" ToRole="tMuonTra" />
+  </EntityType>
+  <EntityType Name="tDocGia">
+    <Key>
+      <PropertyRef Name="MaDG" />
+    </Key>
+    <Property Name="MaDG" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HoDem" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="TenDG" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="SoCMND" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="MaDonVi" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="Ngaysinh" Type="DateTime" Precision="3" />
+    <Property Name="MaDT" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Anh" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tDoiTuong" Relationship="Self.FK_tDocGia_tDoiTuong" FromRole="tDocGia" ToRole="tDoiTuong" />
+    <NavigationProperty Name="tDonVi" Relationship="Self.FK_tDocGia_tDonVi" FromRole="tDocGia" ToRole="tDonVi" />
+  </EntityType>
+  <EntityType Name="tDoiTuong">
+    <Key>
+      <PropertyRef Name="MaDT" />
+    </Key>
+    <Property Name="MaDT" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenDoiTuong" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tDocGias" Relationship="Self.FK_tDocGia_tDoiTuong" FromRole="tDoiTuong" ToRole="tDocGia" />
+  </EntityType>
+  <EntityType Name="tDonVi">
+    <Key>
+      <PropertyRef Name="MaDonVi" />
+    </Key>
+    <Property Name="MaDonVi" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenDonVi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tDocGias" Relationship="Self.FK_tDocGia_tDonVi" FromRole="tDonVi" ToRole="tDocGia" />
+  </EntityType>
+  <EntityType Name="tLoaiSach">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tSaches" Relationship="Self.FK_tSach_tLoaiSach" FromRole="tLoaiSach" ToRole="tSach" />
+  </EntityType>
+  <EntityType Name="tMuonTra">
+    <Key>
+      <PropertyRef Name="MaThe" />
+      <PropertyRef Name="MaBanSao" />
+    </Key>
+    <Property Name="MaThe" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaBanSao" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DatCoc" Type="Double" />
+    <Property Name="NgayMuon" Type="DateTime" Precision="3" />
+    <Property Name="NgayPhaiTra" Type="DateTime" Precision="3" />
+    <Property Name="NgayTra" Type="DateTime" Precision="3" />
+    <Property Name="TinhTrangSach" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+    <Property Name="Phat" Type="Double" />
+    <NavigationProperty Name="tBanSaoSach" Relationship="Self.FK_tMuonTra_tBanSaoSach" FromRole="tMuonTra" ToRole="tBanSaoSach" />
+  </EntityType>
+  <EntityType Name="tNgonNgu">
+    <Key>
+      <PropertyRef Name="MaNgonNgu" />
+    </Key>
+    <Property Name="MaNgonNgu" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenNgonNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tSaches" Relationship="Self.FK_tSach_tNgonNgu" FromRole="tNgonNgu" ToRole="tSach" />
+  </EntityType>
+  <EntityType Name="tNhaXB">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenNXB" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tSaches" Relationship="Self.FK_tSach_tNhaXB" FromRole="tNhaXB" ToRole="tSach" />
+  </EntityType>
+  <EntityType Name="tSach">
+    <Key>
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaSach" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenSach" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoai" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="MaNgonNgu" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="MaNXB" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="TacGia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NamXB" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="LanXB" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TongSoTrang" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="Tap" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="TongSoTap" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="GiaTriSach" Type="Double" />
+    <Property Name="FileAnh" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="MaTheLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tBanSaoSaches" Relationship="Self.FK_tBanSaoSach_tSach" FromRole="tSach" ToRole="tBanSaoSach" />
+    <NavigationProperty Name="tLoaiSach" Relationship="Self.FK_tSach_tLoaiSach" FromRole="tSach" ToRole="tLoaiSach" />
+    <NavigationProperty Name="tNgonNgu" Relationship="Self.FK_tSach_tNgonNgu" FromRole="tSach" ToRole="tNgonNgu" />
+    <NavigationProperty Name="tNhaXB" Relationship="Self.FK_tSach_tNhaXB" FromRole="tSach" ToRole="tNhaXB" />
+  </EntityType>
+  <Association Name="FK_tBanSaoSach_tSach">
+    <End Role="tSach" Type="Self.tSach" Multiplicity="0..1" />
+    <End Role="tBanSaoSach" Type="Self.tBanSaoSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="tBanSaoSach">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tMuonTra_tBanSaoSach">
+    <End Role="tBanSaoSach" Type="Self.tBanSaoSach" Multiplicity="1" />
+    <End Role="tMuonTra" Type="Self.tMuonTra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBanSaoSach">
+        <PropertyRef Name="MaBanSao" />
+      </Principal>
+      <Dependent Role="tMuonTra">
+        <PropertyRef Name="MaBanSao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDocGia_tDoiTuong">
+    <End Role="tDoiTuong" Type="Self.tDoiTuong" Multiplicity="0..1" />
+    <End Role="tDocGia" Type="Self.tDocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDoiTuong">
+        <PropertyRef Name="MaDT" />
+      </Principal>
+      <Dependent Role="tDocGia">
+        <PropertyRef Name="MaDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDocGia_tDonVi">
+    <End Role="tDonVi" Type="Self.tDonVi" Multiplicity="0..1" />
+    <End Role="tDocGia" Type="Self.tDocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDonVi">
+        <PropertyRef Name="MaDonVi" />
+      </Principal>
+      <Dependent Role="tDocGia">
+        <PropertyRef Name="MaDonVi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tLoaiSach">
+    <End Role="tLoaiSach" Type="Self.tLoaiSach" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tLoaiSach">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tNgonNgu">
+    <End Role="tNgonNgu" Type="Self.tNgonNgu" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tNgonNgu">
+        <PropertyRef Name="MaNgonNgu" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaNgonNgu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tNhaXB">
+    <End Role="tNhaXB" Type="Self.tNhaXB" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tNhaXB">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ThuVienDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tBanSaoSaches" EntityType="Self.tBanSaoSach" />
+    <EntitySet Name="tDocGias" EntityType="Self.tDocGia" />
+    <EntitySet Name="tDoiTuongs" EntityType="Self.tDoiTuong" />
+    <EntitySet Name="tDonVis" EntityType="Self.tDonVi" />
+    <EntitySet Name="tLoaiSaches" EntityType="Self.tLoaiSach" />
+    <EntitySet Name="tMuonTras" EntityType="Self.tMuonTra" />
+    <EntitySet Name="tNgonNgus" EntityType="Self.tNgonNgu" />
+    <EntitySet Name="tNhaXBs" EntityType="Self.tNhaXB" />
+    <EntitySet Name="tSaches" EntityType="Self.tSach" />
+    <AssociationSet Name="FK_tBanSaoSach_tSach" Association="Self.FK_tBanSaoSach_tSach">
+      <End Role="tSach" EntitySet="tSaches" />
+      <End Role="tBanSaoSach" EntitySet="tBanSaoSaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tMuonTra_tBanSaoSach" Association="Self.FK_tMuonTra_tBanSaoSach">
+      <End Role="tBanSaoSach" EntitySet="tBanSaoSaches" />
+      <End Role="tMuonTra" EntitySet="tMuonTras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDocGia_tDoiTuong" Association="Self.FK_tDocGia_tDoiTuong">
+      <End Role="tDoiTuong" EntitySet="tDoiTuongs" />
+      <End Role="tDocGia" EntitySet="tDocGias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDocGia_tDonVi" Association="Self.FK_tDocGia_tDonVi">
+      <End Role="tDonVi" EntitySet="tDonVis" />
+      <End Role="tDocGia" EntitySet="tDocGias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tLoaiSach" Association="Self.FK_tSach_tLoaiSach">
+      <End Role="tLoaiSach" EntitySet="tLoaiSaches" />
+      <End Role="tSach" EntitySet="tSaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tNgonNgu" Association="Self.FK_tSach_tNgonNgu">
+      <End Role="tNgonNgu" EntitySet="tNgonNgus" />
+      <End Role="tSach" EntitySet="tSaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tNhaXB" Association="Self.FK_tSach_tNhaXB">
+      <End Role="tNhaXB" EntitySet="tNhaXBs" />
+      <End Role="tSach" EntitySet="tSaches" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

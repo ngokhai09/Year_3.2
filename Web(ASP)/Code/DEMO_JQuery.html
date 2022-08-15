@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#1").animate({top: '250px'}, "slow");
+                $("#1").animate({top: '100px'}, "fast");
+            });
+            $("#btn3").click(function(){
+                $("#1").fadeIn("slow");
+            });
+            $("#btn2").click(function(){
+                $("#1").fadeOut("slow");
+            });
+            $("#btn4").click(function(){
+                $("#3").css({"height": "50px", "width": "100px"});
+            });
+            $("#btn5").click(function(){
+                $("#2").css({"font-size":"30px"});
+            });
+            $("#btn7").click(function(){
+                $("#4").text("Xin chào");
+            });
+            $("#btn8").click(function(){
+                $("form").append("<input>");
+            });
+            $("#btn9").click(function(){
+                console.log($("#cc").prop("outerHTML"));
+            });
+            $("#btn10").click(function(){
+                $("#4").wrap("<div></div>");
+            });
+            $("#btn11").click(function(){
+                console.log($("#name").val());
+            });
+            $("#btn12").click(function(){
+                $("#cc").detach().insertBefore("#4");
+            });
+            $("#btn13").click(function(){
+                $("#5").replaceWith("<input>");
+            });
+            $("#btn14").click(function(){
+                $("#5").remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="col-3">
+
+                <h5>Trượt và Làm mờ/rõ các phần tử</h5>
+                <button id="btn1">Trượt các phần tử lên xuống</button>
+                <button id="btn2">Làm mờ</button>
+                <button id="btn3">Làm rõ</button>
+                <div id="1" style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+            </div>
+            <div class="col-3">
+                <h5>Tạo hiệu ứng cho các phần tử</h5>
+                <button id="btn4">Hiệu ứng cho kích cỡ(height, width)</button>
+                <button id="btn5">Hiệu ứng cho chữ(font size)</button>
+                <p id="2">Hello world</p>
+                <div id="3" style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+            </div>
+            <div class="col-3">
+                <h5>Làm động nội dung trang web</h5>
+
+                <button id="btn6">Điều khiển văn bản trên trang</button>
+
+                <button id="btn7">Thay đổi nội dung</button>
+                <button id="btn8">đặt một phần tử vào phần tử khác</button>
+                <button id="btn9">Lấy outer HTML</button>
+                <button id="btn10">Bao phủ(Wrapping)phần tử này bởi 1 phần tử khác</button>
+                <button id="btn11">Lấy giá trị các phần tử của form</button>
+                <button id="btn12">Thay đổi thứ tự(order) của các phần tử</button>
+                <p id="4">Hello world</p>
+                <div id="cc">
+                    <p>Content</p>
+                </div>
+                <form action="">
+                    <label for="name">
+                        <input type="text" id="name">
+                    </label>
+                </form>
+            </div>
+            <div class="col-3">
+                <h5>Thay thế, loại bỏ, sao chép phần tử</h5>
+                <button id="btn13">Thay thế phần tử này bởi phần tử khác </button>
+                <button id="btn14">Xóa phần tử</button>
+                <button id="btn15">Tạo bản sao cho phần tử và sự kiện </button>
+                <button id="btn16">Sao chép phần tử không kèm sự kiện </button>
+
+                <p id="5">ABDSJS</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+</script>

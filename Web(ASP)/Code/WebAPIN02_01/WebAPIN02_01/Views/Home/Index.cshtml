@@ -1,0 +1,41 @@
+﻿<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</head>
+<div class="container">
+    <div class="radio">
+        <form>
+            <label><input type="radio" name="optRadio" value="" />All Products</label> &nbsp;&nbsp;
+            <label><input type="radio" name="optRadio" value="?MaLoai=vali" />Vali</label> &nbsp;&nbsp;
+            <label><input type="radio" name="optRadio" value="?MaLoai=tui" />Tui</label> &nbsp;&nbsp;
+            <label><input type="radio" name="optRadio" value="?MaLoai=vi" />Vi</label> &nbsp;&nbsp;
+            <label><input type="radio" name="optRadio" value="?Maloai=balo" />Balo</label> &nbsp;&nbsp;
+        </form>
+    </div>
+    <button id="Show">Hien san pham</button>
+    <button id="ShowDeltail">Hien chi tiet san pham</button>
+    <div id="DisplayHere" class="col-md-6"></div>
+    <div id="DisplayDetail" class="col-md-6"></div>
+</div>
+@section Scripts{
+    <script type="text/javascript" >
+        $('document').ready(function () {
+            $('#Show').click(function () {
+                $('#DisplayHere').empty();
+                var row = '';
+                $.getJSON('/api/Products' + $('input:radio:checked').val(), function (data) {
+                    $.each(data, function (key, val) {
+                        row += '<p>' + val.TenSP + '</p>';
+                    })
+                    $('#DisplayHere').html(row);
+                });
+                return false;
+            });
+            $('#ShowDeatail').click(function () {
+                $('#ShowDetail').empty();
+                $.getJSON()
+            });
+        });
+    </script>
+    
+    }

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSDLThuVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tBanSaoSach">
+    <Key>
+      <PropertyRef Name="MaBanSao" />
+    </Key>
+    <Property Name="MaBanSao" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="MaSach" Type="char" MaxLength="25" />
+    <Property Name="TrangThai" Type="bit" />
+    <Property Name="TinhTrangSach" Type="nvarchar" MaxLength="255" />
+    <Property Name="ViTri" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tDocGia">
+    <Key>
+      <PropertyRef Name="MaDG" />
+    </Key>
+    <Property Name="MaDG" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="HoDem" Type="nvarchar" MaxLength="55" />
+    <Property Name="TenDG" Type="nvarchar" MaxLength="25" />
+    <Property Name="SoCMND" Type="nvarchar" MaxLength="25" />
+    <Property Name="MaDonVi" Type="char" MaxLength="25" />
+    <Property Name="Ngaysinh" Type="datetime" />
+    <Property Name="MaDT" Type="char" MaxLength="25" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="Anh" Type="nchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tDoiTuong">
+    <Key>
+      <PropertyRef Name="MaDT" />
+    </Key>
+    <Property Name="MaDT" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenDoiTuong" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tDonVi">
+    <Key>
+      <PropertyRef Name="MaDonVi" />
+    </Key>
+    <Property Name="MaDonVi" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tLoaiSach">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="155" />
+  </EntityType>
+  <EntityType Name="tMuonTra">
+    <Key>
+      <PropertyRef Name="MaThe" />
+      <PropertyRef Name="MaBanSao" />
+    </Key>
+    <Property Name="MaThe" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="MaBanSao" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="DatCoc" Type="float" />
+    <Property Name="NgayMuon" Type="datetime" />
+    <Property Name="NgayPhaiTra" Type="datetime" />
+    <Property Name="NgayTra" Type="datetime" />
+    <Property Name="TinhTrangSach" Type="nvarchar" MaxLength="155" />
+    <Property Name="Phat" Type="float" />
+  </EntityType>
+  <EntityType Name="tNgonNgu">
+    <Key>
+      <PropertyRef Name="MaNgonNgu" />
+    </Key>
+    <Property Name="MaNgonNgu" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenNgonNgu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tNhaXB">
+    <Key>
+      <PropertyRef Name="MaNXB" />
+    </Key>
+    <Property Name="MaNXB" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenNXB" Type="nvarchar" MaxLength="155" />
+  </EntityType>
+  <EntityType Name="tSach">
+    <Key>
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaSach" Type="char" MaxLength="25" Nullable="false" />
+    <Property Name="TenSach" Type="nvarchar" MaxLength="155" />
+    <Property Name="MaLoai" Type="char" MaxLength="25" />
+    <Property Name="MaNgonNgu" Type="char" MaxLength="25" />
+    <Property Name="MaNXB" Type="char" MaxLength="25" />
+    <Property Name="TacGia" Type="nvarchar" MaxLength="150" />
+    <Property Name="NamXB" Type="char" MaxLength="4" />
+    <Property Name="LanXB" Type="char" MaxLength="3" />
+    <Property Name="TomTat" Type="text" />
+    <Property Name="TongSoTrang" Type="char" MaxLength="6" />
+    <Property Name="Tap" Type="char" MaxLength="4" />
+    <Property Name="TongSoTap" Type="char" MaxLength="4" />
+    <Property Name="GiaTriSach" Type="float" />
+    <Property Name="FileAnh" Type="char" MaxLength="100" />
+    <Property Name="MaTheLoai" Type="varchar" MaxLength="10" />
+    <Property Name="GioiThieu" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_tBanSaoSach_tSach">
+    <End Role="tSach" Type="Self.tSach" Multiplicity="0..1" />
+    <End Role="tBanSaoSach" Type="Self.tBanSaoSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="tBanSaoSach">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDocGia_tDoiTuong">
+    <End Role="tDoiTuong" Type="Self.tDoiTuong" Multiplicity="0..1" />
+    <End Role="tDocGia" Type="Self.tDocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDoiTuong">
+        <PropertyRef Name="MaDT" />
+      </Principal>
+      <Dependent Role="tDocGia">
+        <PropertyRef Name="MaDT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tDocGia_tDonVi">
+    <End Role="tDonVi" Type="Self.tDonVi" Multiplicity="0..1" />
+    <End Role="tDocGia" Type="Self.tDocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDonVi">
+        <PropertyRef Name="MaDonVi" />
+      </Principal>
+      <Dependent Role="tDocGia">
+        <PropertyRef Name="MaDonVi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tMuonTra_tBanSaoSach">
+    <End Role="tBanSaoSach" Type="Self.tBanSaoSach" Multiplicity="1" />
+    <End Role="tMuonTra" Type="Self.tMuonTra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tBanSaoSach">
+        <PropertyRef Name="MaBanSao" />
+      </Principal>
+      <Dependent Role="tMuonTra">
+        <PropertyRef Name="MaBanSao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tLoaiSach">
+    <End Role="tLoaiSach" Type="Self.tLoaiSach" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tLoaiSach">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tNgonNgu">
+    <End Role="tNgonNgu" Type="Self.tNgonNgu" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tNgonNgu">
+        <PropertyRef Name="MaNgonNgu" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaNgonNgu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tSach_tNhaXB">
+    <End Role="tNhaXB" Type="Self.tNhaXB" Multiplicity="0..1" />
+    <End Role="tSach" Type="Self.tSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tNhaXB">
+        <PropertyRef Name="MaNXB" />
+      </Principal>
+      <Dependent Role="tSach">
+        <PropertyRef Name="MaNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CSDLThuVienModelStoreContainer">
+    <EntitySet Name="tBanSaoSach" EntityType="Self.tBanSaoSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDocGia" EntityType="Self.tDocGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDoiTuong" EntityType="Self.tDoiTuong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDonVi" EntityType="Self.tDonVi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tLoaiSach" EntityType="Self.tLoaiSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tMuonTra" EntityType="Self.tMuonTra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tNgonNgu" EntityType="Self.tNgonNgu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tNhaXB" EntityType="Self.tNhaXB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tSach" EntityType="Self.tSach" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tBanSaoSach_tSach" Association="Self.FK_tBanSaoSach_tSach">
+      <End Role="tSach" EntitySet="tSach" />
+      <End Role="tBanSaoSach" EntitySet="tBanSaoSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDocGia_tDoiTuong" Association="Self.FK_tDocGia_tDoiTuong">
+      <End Role="tDoiTuong" EntitySet="tDoiTuong" />
+      <End Role="tDocGia" EntitySet="tDocGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tDocGia_tDonVi" Association="Self.FK_tDocGia_tDonVi">
+      <End Role="tDonVi" EntitySet="tDonVi" />
+      <End Role="tDocGia" EntitySet="tDocGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tMuonTra_tBanSaoSach" Association="Self.FK_tMuonTra_tBanSaoSach">
+      <End Role="tBanSaoSach" EntitySet="tBanSaoSach" />
+      <End Role="tMuonTra" EntitySet="tMuonTra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tLoaiSach" Association="Self.FK_tSach_tLoaiSach">
+      <End Role="tLoaiSach" EntitySet="tLoaiSach" />
+      <End Role="tSach" EntitySet="tSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tNgonNgu" Association="Self.FK_tSach_tNgonNgu">
+      <End Role="tNgonNgu" EntitySet="tNgonNgu" />
+      <End Role="tSach" EntitySet="tSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tSach_tNhaXB" Association="Self.FK_tSach_tNhaXB">
+      <End Role="tNhaXB" EntitySet="tNhaXB" />
+      <End Role="tSach" EntitySet="tSach" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

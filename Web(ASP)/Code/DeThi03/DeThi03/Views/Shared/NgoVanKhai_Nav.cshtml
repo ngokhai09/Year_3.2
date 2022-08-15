@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DeThi03.Models.Category>
+<div class="col-md-4 products-left">
+    <div class="categories">
+        <h2>Categories</h2>
+        <ul class="cate">
+            @{
+                foreach (var item in Model)
+                {
+                    <li value="@item.Id"><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>@item.Name</a></li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>
+<script>
+    $("li").click(function (e) {
+        var id = $(this).val();
+        $.ajax({
+            url: "getProductByCatId",
+            data: { CatId: id },
+            success: function (res) {
+                $("div.pro").html(res);
+            }
+        })
+    })
+</script>
